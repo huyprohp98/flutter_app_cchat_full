@@ -1,6 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter_app_cchat/app/constants/barrel_constants.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_app_cchat/app/constants/endpoint/app_anh_quan_endpoint.dart';
 import 'package:flutter_app_cchat/model/api/request/forgot_password_request.dart';
 import 'package:flutter_app_cchat/model/api/request/forgot_password_reset_request.dart';
@@ -40,7 +40,6 @@ import 'package:flutter_app_cchat/model/entity/banner.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:flutter_app_cchat/model/api/response/list_home_response.dart';
 import 'package:flutter_app_cchat/model/entity/list_banner.dart';
-
 
 import 'request/barrel_request.dart';
 import 'response/barrel_response.dart';
@@ -139,7 +138,7 @@ abstract class RestClient {
       @Query("price_end") String priceEnd,
       @Query("type") int type);
   @GET(Endpoint.PROFILE)
-  Future<ProfileResponse> getProfiles();
+  Future<ProfileResponse> getProfile();
   @GET(Endpoint.APP_CONFIGS)
   Future<AppConfigResponse> getAppConfigs();
   // @GET(Endpoint.CART)

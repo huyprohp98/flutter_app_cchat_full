@@ -23,7 +23,6 @@ class _RestClient implements RestClient {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(loginAppRequest?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>('/api/loginApp',
         queryParameters: queryParameters,
         options: RequestOptions(
@@ -43,7 +42,6 @@ class _RestClient implements RestClient {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(registerAppRequest?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>('/api/registerApp',
         queryParameters: queryParameters,
         options: RequestOptions(
@@ -63,7 +61,6 @@ class _RestClient implements RestClient {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(registerVerifyRequest?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/api/checkOtpRegister',
         queryParameters: queryParameters,
@@ -84,7 +81,6 @@ class _RestClient implements RestClient {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(resendOtpRequest?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/api/resendCodeOtp',
         queryParameters: queryParameters,
@@ -105,7 +101,6 @@ class _RestClient implements RestClient {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(forgotPasswordRequest?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/api/forgetPassword',
         queryParameters: queryParameters,
@@ -128,7 +123,6 @@ class _RestClient implements RestClient {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(forgotPasswordVerifyRequest?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/api/checkOtpInForgotPassword',
         queryParameters: queryParameters,
@@ -151,7 +145,6 @@ class _RestClient implements RestClient {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(forgotPasswordResetRequest?.toJson() ?? <String, dynamic>{});
-    _data.removeWhere((k, v) => v == null);
     final _result = await _dio.request<Map<String, dynamic>>(
         '/api/resetPassword',
         queryParameters: queryParameters,
@@ -463,13 +456,13 @@ class _RestClient implements RestClient {
     final value = ProductByAttrResponse.fromJson(_result.data);
     return value;
   }
+
   @override
-  getProfiles() async {
+  Future<ProfileResponse> getProfile() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final Response<Map<String, dynamic>> _result = await _dio.request(
-        '/api/profileUser',
+    final _result = await _dio.request<Map<String, dynamic>>('/api/profileUser',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -480,12 +473,13 @@ class _RestClient implements RestClient {
     final value = ProfileResponse.fromJson(_result.data);
     return value;
   }
+
   @override
-  getAppConfigs() async {
+  Future<AppConfigResponse> getAppConfigs() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final Response<Map<String, dynamic>> _result = await _dio.request(
+    final _result = await _dio.request<Map<String, dynamic>>(
         '/api/getInfoAppConfig',
         queryParameters: queryParameters,
         options: RequestOptions(

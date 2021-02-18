@@ -126,7 +126,7 @@ class UserRepository {
   }
   Future<ProfileResponse> getProfile() async {
     final client = RestClient(dio);
-    return client.getProfiles();
+    return client.getProfile();
   }
   Future<AppConfigResponse> getAppConfigs() async {
     final client = RestClient(dio);
