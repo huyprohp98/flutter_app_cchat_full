@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_app_cchat/app/constants/navigator/navigator.dart';
 import 'package:flutter_app_cchat/model/api/request/barrel_request.dart';
 import 'package:flutter_app_cchat/model/api/request/forgot_password_request.dart';
 import 'package:flutter_app_cchat/model/api/request/forgot_password_reset_request.dart';
@@ -34,6 +35,10 @@ class UserRepository {
   final Dio dio;
 
   UserRepository({@required this.dio});
+
+
+
+
 
   Future<LoginRegisterResponse> loginApp(
       {@required String username, @required String password}) async {
@@ -132,6 +137,10 @@ class UserRepository {
     final client = RestClient(dio);
     return client.getAppConfigs();
   }
+  // Future<void> signOut() async {
+  //    return Future.wait([_googleSignIn.signOut(), facebookLogin.logOut()]);
+  //
+  // }
   // Future<ListHomeResponse> getListHome() async {
   //   final client = RestClient(dio);
   //   return client.getListHomes();

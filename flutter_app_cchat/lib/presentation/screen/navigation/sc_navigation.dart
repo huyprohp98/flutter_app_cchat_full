@@ -1,3 +1,4 @@
+import 'package:flutter_app_cchat/app/constants/navigator/navigator.dart';
 import 'package:flutter_app_cchat/presentation/common_widgets/barrel_common_widgets.dart';
 import 'package:flutter_app_cchat/presentation/menu/home/news_product/detail_new/sc_detail_new.dart';
 import 'package:flutter_app_cchat/presentation/menu/home/news_product/sc_new_product.dart';
@@ -17,6 +18,7 @@ import 'package:flutter_app_cchat/presentation/screen/drawer/app_drawer.dart';
 // import 'package:flutter_app_cchat/presentation/screen/menu/sc_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_cchat/presentation/screen/login/login.dart';
+import 'package:flutter_app_cchat/utils/handler/with_auth.dart';
 
 class TabNavigatorRoutes {
 //  static const String root = '/';
@@ -114,8 +116,8 @@ class _NavigationScreenState extends State<NavigationScreen> {
             //   drawer: _drawerKey,
             // ),
             ProfileScreen(),
-
-            LoginScreen(),
+            InformationPage(),
+            // LoginScreen(),
           ],
         ));
   }
@@ -160,16 +162,38 @@ class _NavigationScreenState extends State<NavigationScreen> {
     ]);
   }
 
-  void goToPage({int page, int id = 0}) {
-    if (page != _selectedIndex) {
-      setState(() {
-        this._selectedIndex = page;
-      });
-      _pageController.jumpToPage(_selectedIndex);
-    }
-    setState(() {
-      this._selectedIndex = page;
+  // void goToPage({int page, int id = 0}) {
+  //   if (page != _selectedIndex) {
+  //     setState(() {
+  //       this._selectedIndex = page;
+  //     });
+  //     _pageController.jumpToPage(_selectedIndex);
+  //   }
+  //   setState(() {
+  //     this._selectedIndex = page;
+  //   });
+  //   _pageController.jumpToPage(_selectedIndex);
+  // }
+  goToPage({int page}) {
+    WithAuth.isAuth(ifNotAuth: () {
+      if (page == 3 || page == 4) {
+        AppNavigator.navigateLogin();
+      } else {
+        if (page != _selectedIndex) {
+          setState(() {
+            this._selectedIndex = page;
+          });
+          _pageController.jumpToPage(_selectedIndex);
+        }
+      }
+    }, ifAuth: () {
+      if (page != _selectedIndex) {
+        setState(() {
+          this._selectedIndex = page;
+        });
+        _pageController.jumpToPage(_selectedIndex);
+      }
     });
-    _pageController.jumpToPage(_selectedIndex);
   }
+
 }

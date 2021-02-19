@@ -206,6 +206,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     if (result==true) {
                       BlocProvider.of<AuthenticationBloc>(context)
                           .add(LoggedOut());
+                      AppNavigator.navigateNavigation();
                     }
                   },
                 ),

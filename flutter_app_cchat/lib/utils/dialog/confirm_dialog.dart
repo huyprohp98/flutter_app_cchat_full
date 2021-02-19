@@ -45,6 +45,7 @@ class ConfirmDialog {
                             children: <Widget>[
                               GestureDetector(
                                 onTap: () => Navigator.pop(context, true),
+                                // onTap: () => Navigator.popAndPushNamed(context, '/LoginScreen'),
                                 child: Container(
                                   padding: EdgeInsets.only(
                                     top: 10,

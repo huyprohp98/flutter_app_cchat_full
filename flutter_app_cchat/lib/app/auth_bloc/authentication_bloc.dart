@@ -48,6 +48,6 @@ class AuthenticationBloc
     yield Unauthenticated();
     _sessionRepository..saveToken(null);
     DioProvider.bearer(null);
-    //  _userRepository.signOut();
+     // _userRepository.signOut();
   }
 }
