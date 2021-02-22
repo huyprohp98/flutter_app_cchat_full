@@ -491,4 +491,176 @@ class _RestClient implements RestClient {
     final value = AppConfigResponse.fromJson(_result.data);
     return value;
   }
+
+  @override
+  Future<UpdateAvatarResponse> updateAvatar(avatarFile) async {
+    ArgumentError.checkNotNull(avatarFile, 'avatarFile');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = FormData();
+    _data.files.add(MapEntry(
+        'avatar_image',
+        MultipartFile.fromFileSync(avatarFile.path,
+            filename: avatarFile.path.split(Platform.pathSeparator).last)));
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/api/updateAvatarUser',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = UpdateAvatarResponse.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  Future<UpdateBackgroundImageResponse> updateBackgroundImage(
+      backgroundImageFile) async {
+    ArgumentError.checkNotNull(backgroundImageFile, 'backgroundImageFile');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = FormData();
+    _data.files.add(MapEntry(
+        'background_image',
+        MultipartFile.fromFileSync(backgroundImageFile.path,
+            filename:
+                backgroundImageFile.path.split(Platform.pathSeparator).last)));
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/api/updateBackgroundImageUser',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = UpdateBackgroundImageResponse.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  Future<UpdateBirthdayResponse> updateBirthday(updateBirthdayRequest) async {
+    ArgumentError.checkNotNull(updateBirthdayRequest, 'updateBirthdayRequest');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(updateBirthdayRequest?.toJson() ?? <String, dynamic>{});
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/api/updateBirthdayUser',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = UpdateBirthdayResponse.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  Future<UpdateEmailResponse> updateEmailVerify(
+      updateEmailVerifyRequest) async {
+    ArgumentError.checkNotNull(
+        updateEmailVerifyRequest, 'updateEmailVerifyRequest');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(updateEmailVerifyRequest?.toJson() ?? <String, dynamic>{});
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/api/sendOtpInUpdateEmailUser',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = UpdateEmailResponse.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  Future<UpdateEmailResponse> updateEmail(updateEmailRequest) async {
+    ArgumentError.checkNotNull(updateEmailRequest, 'updateEmailRequest');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(updateEmailRequest?.toJson() ?? <String, dynamic>{});
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/api/updateEmailUser',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = UpdateEmailResponse.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  Future<UpdatePhoneResponse> updatePhone(updatePhoneRequest) async {
+    ArgumentError.checkNotNull(updatePhoneRequest, 'updatePhoneRequest');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(updatePhoneRequest?.toJson() ?? <String, dynamic>{});
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/api/updatePhoneNumberUser',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = UpdatePhoneResponse.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  Future<UpdatePhoneResponse> updatePhoneVerify(
+      updatePhoneVerifyRequest) async {
+    ArgumentError.checkNotNull(
+        updatePhoneVerifyRequest, 'updatePhoneVerifyRequest');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(updatePhoneVerifyRequest?.toJson() ?? <String, dynamic>{});
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/api/sendOtpInUpdatePhoneUser',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = UpdatePhoneResponse.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  Future<UpdateNameResponse> updateName(updateNameRequest) async {
+    ArgumentError.checkNotNull(updateNameRequest, 'updateNameRequest');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(updateNameRequest?.toJson() ?? <String, dynamic>{});
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/api/updateFullNameUser',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = UpdateNameResponse.fromJson(_result.data);
+    return value;
+  }
 }

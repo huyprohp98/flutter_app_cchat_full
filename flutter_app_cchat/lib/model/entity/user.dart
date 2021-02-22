@@ -51,7 +51,12 @@ class User extends Equatable {
   String createdAt;
   @JsonKey(name: "updated_at")
   String updatedAt;
-
+  @JsonKey(name: "date_of_birth")
+  String dateOfBirth;
+  @JsonKey(name: "point")
+  double point;
+  @JsonKey(name: "currentRanking")
+  int currentRanking;
 
   User(
       this.id,
@@ -76,15 +81,17 @@ class User extends Equatable {
       this.deviceIdentifier,
       this.expireAt,
       this.createdAt,
-      this.updatedAt
-      );
+      this.updatedAt,
+      this.dateOfBirth,
+      this.point,
+      this.currentRanking);
 
   @override
   String toString() {
     return 'User{id: $id, name: $name,username: $username,email: $email,phoneNumber: $phoneNumber, gender: $gender, memberCode: $memberCode,avatar: $avatar,'
         'backgroundImage: $backgroundImage, address: $address, provinceId: $provinceId, districtId: $districtId,latitude: $latitude,longitude: $longitude, '
         'socialId: $socialId, type: $type, roleId: $roleId,typeRegister: $typeRegister, status: $status, deviceIdentifier: $deviceIdentifier,'
-        'expireAt: $expireAt, createdAt: $createdAt, updatedAt: $updatedAt}';
+        'expireAt: $expireAt, createdAt: $createdAt, updatedAt: $updatedAt,dateOfBirth: $dateOfBirth, point: $point, currentRanking: $currentRanking}';
   }
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -93,28 +100,31 @@ class User extends Equatable {
 
   @override
   List<Object> get props => [
-    id,
-    name,
-    username,
-    email,
-    phoneNumber,
-    gender,
-    memberCode,
-    avatar,
-    backgroundImage,
-    address,
-    provinceId,
-    districtId,
-    latitude,
-    longitude,
-    socialId,
-    type,
-    roleId,
-    typeRegister,
-    status,
-    deviceIdentifier,
-    expireAt,
-    createdAt,
-    updatedAt
-  ];
+        id,
+        name,
+        username,
+        email,
+        phoneNumber,
+        gender,
+        memberCode,
+        avatar,
+        backgroundImage,
+        address,
+        provinceId,
+        districtId,
+        latitude,
+        longitude,
+        socialId,
+        type,
+        roleId,
+        typeRegister,
+        status,
+        deviceIdentifier,
+        expireAt,
+        createdAt,
+        updatedAt,
+        dateOfBirth,
+        point,
+        currentRanking
+      ];
 }

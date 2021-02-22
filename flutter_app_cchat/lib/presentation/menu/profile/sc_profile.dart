@@ -99,7 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     url: state.user.avatar,
                   ),
                   onTap: () {
-                    // AppNavigator.navigateProfileDetail();
+                    AppNavigator.navigateProfileDetail();
                   },
                 ),
                 WidgetProfileMenu(

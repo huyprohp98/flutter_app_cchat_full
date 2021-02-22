@@ -29,6 +29,14 @@ class Endpoint {
   static const PRODUCT_SEARCH_ATTR = '/api/searchProductByKey';
   static const PROFILE = '/api/profileUser';
   static const APP_CONFIGS = '/api/getInfoAppConfig';
+  static const UPDATE_AVATAR = '/api/updateAvatarUser';
+  static const UPDATE_BACKGROUND_IMAGE = '/api/updateBackgroundImageUser';
+  static const UPDATE_BIRTHDAY = '/api/updateBirthdayUser';
+  static const UPDATE_EMAIL_VERIFY = '/api/sendOtpInUpdateEmailUser';
+  static const UPDATE_EMAIL = '/api/updateEmailUser';
+  static const UPDATE_PHONE = '/api/updatePhoneNumberUser';
+  static const UPDATE_PHONE_VERIFY = '/api/sendOtpInUpdatePhoneUser';
+  static const UPDATE_NAME = '/api/updateFullNameUser';
 
 
 

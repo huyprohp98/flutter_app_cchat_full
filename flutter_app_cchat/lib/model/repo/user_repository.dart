@@ -8,6 +8,12 @@ import 'package:flutter_app_cchat/model/api/request/forgot_password_verify_reque
 import 'package:flutter_app_cchat/model/api/request/register_app_request.dart';
 import 'package:flutter_app_cchat/model/api/request/register_verify_request.dart';
 import 'package:flutter_app_cchat/model/api/request/resend_otp_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_birthday_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_email_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_email_verify_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_name_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_phone_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_phone_verify_request.dart';
 import 'package:flutter_app_cchat/model/api/response/app_config_response.dart';
 import 'package:flutter_app_cchat/model/api/response/barrel_response.dart';
 import 'package:flutter_app_cchat/model/api/response/forgot_password_reset_response.dart';
@@ -23,6 +29,12 @@ import 'package:flutter_app_cchat/model/api/response/profile_response.dart';
 import 'package:flutter_app_cchat/model/api/response/register_response.dart';
 import 'package:flutter_app_cchat/model/api/response/register_verify_response.dart';
 import 'package:flutter_app_cchat/model/api/response/resend_otp_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_avatar_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_background_image_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_birthday_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_email_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_name_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_phone_response.dart';
 import 'package:flutter_app_cchat/model/api/rest_client.dart';
 import 'package:flutter_app_cchat/model/api/response/list_home_response.dart';
 import 'package:flutter_app_cchat/model/api/response/list_banner_response.dart';
@@ -136,6 +148,40 @@ class UserRepository {
   Future<AppConfigResponse> getAppConfigs() async {
     final client = RestClient(dio);
     return client.getAppConfigs();
+  }
+  Future<UpdateAvatarResponse> updateAvatar({@required File avatarFile}) async {
+    final client = RestClient(dio);
+    return client.updateAvatar(avatarFile);
+  }
+  Future<UpdateBackgroundImageResponse> updateBackgroundImage(
+      {@required File backgroundImageFile}) async {
+    final client = RestClient(dio);
+    return client.updateBackgroundImage(backgroundImageFile);
+  }
+  Future<UpdateBirthdayResponse> updateBirthDay(
+      {@required String birthDay}) async {
+    final client = RestClient(dio);
+    return client.updateBirthday(UpdateBirthdayRequest(dateOfBirth: birthDay));
+  }
+  Future<UpdateEmailResponse> updateEmailVerify({@required String email}) async {
+    final client = RestClient(dio);
+    return client.updateEmailVerify(UpdateEmailVerifyRequest(email: email));
+  }
+  Future<UpdateEmailResponse> updateEmail({@required String email, @required String code}) async {
+    final client = RestClient(dio);
+    return client.updateEmail(UpdateEmailRequest(email: email, code: code));
+  }
+  Future<UpdatePhoneResponse> updatePhone({@required String phone, @required String code}) async {
+    final client = RestClient(dio);
+    return client.updatePhone(UpdatePhoneRequest(phoneNumber: phone, code: code));
+  }
+  Future<UpdatePhoneResponse> updatePhoneVerify({@required String phone}) async {
+    final client = RestClient(dio);
+    return client.updatePhoneVerify(UpdatePhoneVerifyRequest(phoneNumber: phone));
+  }
+  Future<UpdateNameResponse> updateName({@required String name}) async {
+    final client = RestClient(dio);
+    return client.updateName(UpdateNameRequest(name: name));
   }
   // Future<void> signOut() async {
   //    return Future.wait([_googleSignIn.signOut(), facebookLogin.logOut()]);

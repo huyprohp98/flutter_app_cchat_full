@@ -1,6 +1,7 @@
 import 'package:flutter_app_cchat/model/entity/category.dart';
 import 'package:flutter_app_cchat/model/entity/category_product_child.dart';
 import 'package:flutter_app_cchat/model/entity/news_product.dart';
+import 'package:flutter_app_cchat/presentation/change_info_verify/bloc/change_info_verify_bloc.dart';
 import 'package:flutter_app_cchat/presentation/router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -95,6 +96,17 @@ class AppNavigator {
   static navigateCategorySecondary(CategoryProductChild category) async {
     var result = await Get.toNamed(BaseRouter.CATEGORY_SECONDARY,
         arguments: {'category': category});
+    return result;
+  }
+  static navigateProfileDetail() async {
+    var result = await Get.toNamed(BaseRouter.PROFILE_DETAIL);
+    return result;
+  }
+  static navigateChangeInfoVerify({String username, ChangeInfoVerifyType type}) async {
+    var result = await Get.toNamed(BaseRouter.CHANGE_INFO_VERIFY, arguments: {
+      'username': username,
+      'type' : type
+    });
     return result;
   }
 }

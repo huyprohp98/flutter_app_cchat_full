@@ -1,5 +1,17 @@
 import 'dart:io';
 import 'package:flutter_app_cchat/app/constants/barrel_constants.dart';
+import 'package:flutter_app_cchat/model/api/request/update_birthday_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_email_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_email_verify_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_name_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_phone_request.dart';
+import 'package:flutter_app_cchat/model/api/request/update_phone_verify_request.dart';
+import 'package:flutter_app_cchat/model/api/response/update_avatar_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_background_image_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_birthday_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_email_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_name_response.dart';
+import 'package:flutter_app_cchat/model/api/response/update_phone_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_app_cchat/app/constants/endpoint/app_anh_quan_endpoint.dart';
 import 'package:flutter_app_cchat/model/api/request/forgot_password_request.dart';
@@ -141,6 +153,30 @@ abstract class RestClient {
   Future<ProfileResponse> getProfile();
   @GET(Endpoint.APP_CONFIGS)
   Future<AppConfigResponse> getAppConfigs();
+  @POST(Endpoint.UPDATE_AVATAR)
+  Future<UpdateAvatarResponse> updateAvatar(
+      @Part(name: 'avatar_image') File avatarFile);
+  @POST(Endpoint.UPDATE_BACKGROUND_IMAGE)
+  Future<UpdateBackgroundImageResponse> updateBackgroundImage(
+      @Part(name: 'background_image') File backgroundImageFile);
+  @POST(Endpoint.UPDATE_BIRTHDAY)
+  Future<UpdateBirthdayResponse> updateBirthday(
+      @Body() UpdateBirthdayRequest updateBirthdayRequest);
+  @POST(Endpoint.UPDATE_EMAIL_VERIFY)
+  Future<UpdateEmailResponse> updateEmailVerify(
+      @Body() UpdateEmailVerifyRequest updateEmailVerifyRequest);
+  @POST(Endpoint.UPDATE_EMAIL)
+  Future<UpdateEmailResponse> updateEmail(
+      @Body() UpdateEmailRequest updateEmailRequest);
+  @POST(Endpoint.UPDATE_PHONE)
+  Future<UpdatePhoneResponse> updatePhone(
+      @Body() UpdatePhoneRequest updatePhoneRequest);
+  @POST(Endpoint.UPDATE_PHONE_VERIFY)
+  Future<UpdatePhoneResponse> updatePhoneVerify(
+      @Body() UpdatePhoneVerifyRequest updatePhoneVerifyRequest);
+  @POST(Endpoint.UPDATE_NAME)
+  Future<UpdateNameResponse> updateName(
+      @Body() UpdateNameRequest updateNameRequest);
   // @GET(Endpoint.CART)
   // Future<ListProductInCartOfUserResponse> cartGet();
   // @POST(Endpoint.CART_QUANTITY_ADD)

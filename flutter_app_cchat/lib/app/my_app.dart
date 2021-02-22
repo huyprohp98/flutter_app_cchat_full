@@ -8,6 +8,7 @@ import 'package:flutter_app_cchat/presentation/menu/home/category_secondary_two/
 import 'package:flutter_app_cchat/presentation/menu/home/home_bloc/home_bloc.dart';
 import 'package:flutter_app_cchat/presentation/menu/home/home_data_full_bloc/home_data_full_bloc.dart';
 import 'package:flutter_app_cchat/presentation/menu/profile/bloc/profile_bloc.dart';
+import 'package:flutter_app_cchat/presentation/menu/profile_detail/bloc/profile_detail_bloc.dart';
 import 'package:flutter_app_cchat/presentation/router.dart';
 import 'package:flutter_app_cchat/presentation/screen/barrel_screen.dart';
 import 'package:flutter_app_cchat/presentation/screen/navigation/barrel_navigation.dart';
@@ -119,6 +120,10 @@ class MyApp extends StatefulWidget {
           ),
           BlocProvider(
             create: (context) => ProfileBloc(userRepository: userRepository),
+          ),
+          BlocProvider(
+            create: (context) =>
+                ProfileDetailBloc(userRepository: userRepository),
           ),
         ],
         child: MyApp(),

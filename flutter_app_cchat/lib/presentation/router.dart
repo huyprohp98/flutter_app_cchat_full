@@ -9,6 +9,7 @@ import 'package:flutter_app_cchat/presentation/screen/splash/sc_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'change_info_verify/sc_change_info_verify.dart';
 import 'forgot_password/sc_forgot_password.dart';
 import 'forgot_password_reset/sc_forgot_password_reset.dart';
 import 'forgot_password_verify/sc_forgot_password_verify.dart';
@@ -32,6 +33,7 @@ import 'menu/home/news_product/detail_new/bloc/detail_new_bloc.dart';
 import 'menu/home/news_product/detail_new/sc_detail_new.dart';
 import 'menu/new/bloc/post_bloc.dart';
 import 'menu/profile/sc_profile.dart';
+import 'menu/profile_detail/sc_profile_detail.dart';
 
 class BaseRouter {
   static const String SPLASH = '/splash';
@@ -51,6 +53,8 @@ class BaseRouter {
   static const String CATEGORY_SECONDARY = '/category_secondary';
   static const String PRODUCT_DETAIL = '/product_detail';
   static const String PROFILE = '/profile_detail';
+  static const String PROFILE_DETAIL = '/profile_detail';
+  static const String CHANGE_INFO_VERIFY = '/change_info_verify';
 
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -63,6 +67,10 @@ class BaseRouter {
         return MaterialPageRoute(builder: (_) => NavigationScreen());
       case PROFILE:
         return MaterialPageRoute(builder: (_) => ProfileScreen());
+      case PROFILE_DETAIL:
+        return MaterialPageRoute(builder: (_) => ProfileDetailScreen());
+      case CHANGE_INFO_VERIFY:
+        return MaterialPageRoute(builder: (_) => ChangeInfoVerifyScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
@@ -239,6 +247,8 @@ class BaseRouter {
         //       HomeDataFullBloc(homeRepository: homeRepository),
         // ),
       ], child: CategorySecondaryTwoScreen()),
+      PROFILE_DETAIL: (context) => ProfileDetailScreen(),
+      CHANGE_INFO_VERIFY: (context) => ChangeInfoVerifyScreen(),
 
     };
   }

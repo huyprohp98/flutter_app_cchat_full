@@ -31,6 +31,9 @@ User _$UserFromJson(Map<String, dynamic> json) {
     json['expire_at'] as String,
     json['created_at'] as String,
     json['updated_at'] as String,
+    json['date_of_birth'] as String,
+    (json['point'] as num)?.toDouble(),
+    json['currentRanking'] as int,
   );
 }
 
@@ -58,4 +61,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'expire_at': instance.expireAt,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+      'date_of_birth': instance.dateOfBirth,
+      'point': instance.point,
+      'currentRanking': instance.currentRanking,
     };
